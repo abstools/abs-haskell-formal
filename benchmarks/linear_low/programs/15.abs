@@ -1,0 +1,181 @@
+module NLowP15;
+
+interface Main {
+	Unit main();
+	Main m();
+	Main ma();
+}
+
+class IMain implements Main{
+	Unit main(){
+		Main x;
+		Fut<Main> f;
+		Main y;
+		x = new IMain();
+		f = x ! m();
+		y = f.get;
+		x = new IMain();
+		f = x ! m();
+		y = f.get;
+		x = new IMain();
+		f = x ! m();
+		y = f.get;
+		x = new IMain();
+		f = x ! m();
+		y = f.get;
+		x = new IMain();
+		f = x ! m();
+		y = f.get;
+		x = new IMain();
+		f = x ! m();
+		y = f.get;
+		x = new IMain();
+		f = x ! m();
+		y = f.get;
+		x = new IMain();
+		f = x ! m();
+		y = f.get;
+		x = new IMain();
+		f = x ! m();
+		y = f.get;
+		x = new IMain();
+		f = x ! m();
+		y = f.get;
+		x = new IMain();
+		f = x ! m();
+		y = f.get;
+		x = new IMain();
+		f = x ! m();
+		y = f.get;
+		x = new IMain();
+		f = x ! m();
+		y = f.get;
+		x = new IMain();
+		f = x ! m();
+		y = f.get;
+		x = new IMain();
+		f = x ! m();
+		y = f.get;
+	}
+	
+	Main m(){
+		Main x;
+		x = this.ma();
+		x = this.ma();
+		x = this.ma();
+		x = this.ma();
+		x = this.ma();
+		return x;
+	}	
+	
+	Main ma(){
+    Main z = new IMain();
+    Main y;    
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    y = z;
+    z = y;
+    return z;
+  }
+}
+
+{
+	Main x = new IMain();
+	x ! main();
+}
