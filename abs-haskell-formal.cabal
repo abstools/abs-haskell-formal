@@ -1,0 +1,38 @@
+name: abs-haskell-formal
+version: 0.0.1
+synopsis: Translating a subset of ABS to pure Haskell for proving correctness and resource consumption
+description: Translating a subset of ABS to pure Haskell for proving correctness and resource consumption
+author: Nikolaos Bezirgiannis, Enrique Martin, Elvira Albert, Frank de Boer
+maintainer: Nikolaos Bezirgiannis <bezirgia@cwi.nl>
+stability: provisional
+build-type: Simple
+cabal-version: >= 1.8
+
+Source-repository this
+  type:     git
+  location: git://github.com/abstools/abs-haskell-formal.git
+  branch: ast
+
+library
+  build-depends:      base,
+                      -- for scheduler-queue of objects, and dequeue of processes inside an object with Data.Sequence
+                      containers,
+                      -- for the heap array: heap of objects (each with an attr array) and futures (either [listener] value)
+                      vector
+  exposed-modules:
+                      -- * the ABS' AST and the ABS-runtime data-structures
+                      Base,
+                      -- * a single-statement evaluator/interpreter of ABS terms (from AST)
+                      Eval,
+                      -- * the global-system scheduler that schedules concurrent-objects and their processes
+                      Sched,
+                      -- * for debugging a Heap result of an execution (Show-instances for heap and process)
+                      Debug,
+                      -- * Wrapper module that reexports all of the above modules
+                      ABS
+  other-modules:
+                      -- * purely-functional queues (taken from Okasaki)
+                      Q                                    
+  hs-source-dirs:     src
+  ghc-options:        -Wall
+                                                                                        
