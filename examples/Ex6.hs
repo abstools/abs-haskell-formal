@@ -117,7 +117,7 @@ main_ [] this wb k =
 
 m1 :: Method
 m1 [] this wb k =  
-                  Assign t (Param this) $ 
+                  Assign t (Val (Param this)) $ 
                   Return t wb k
 
 main :: IO ()

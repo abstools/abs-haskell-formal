@@ -132,14 +132,8 @@ eval this h attrArrSize = do
                     -- (if S.null calleeProcQueue then (calleeObj:) else id) [this]
                      this:[calleeObj  | S.null calleeProcQueue] 
                    ,h')
-        Assign lhs (Param r) k' -> do
-                        (attrs `V.write` lhs) r
-                        updateObj $ Left k'
-                        return (res, 
-                                [this],
-                                h)
-        Assign lhs (Attr a) k' -> do
-                        (attrs `V.write` lhs) =<< (attrs `V.read` a) 
+        Assign lhs (Val x) k' -> do
+                        (attrs `V.write` lhs) =<< (getVal x)
                         updateObj $ Left k'
                         return (res,
                                 [this], 
@@ -167,7 +161,25 @@ eval this h attrArrSize = do
 
         -- | Evaluates a predicate BExp from the AST to a Haskell's Bool
         beval :: BExp -> IO Bool
-        beval (BCon exp1 exp2) = liftM2 (&&) (beval exp1) (beval exp2)
-        beval (BDis exp1 exp2) = liftM2 (||) (beval exp1) (beval exp2)
-        beval (BNeg exp1) = liftM not $ beval exp1
+        beval (BCon exp1 exp2)  = liftM2 (&&) (beval exp1) (beval exp2)
+        beval (BDis exp1 exp2)  = liftM2 (||) (beval exp1) (beval exp2)
+        beval (BNeg exp1)       = liftM not $ beval exp1
         beval (BEq attr1 attr2) = liftM2 (==) (attrs `V.read` attr1) (attrs `V.read` attr2)
+        beval (IEq e1 e2)       = liftM2 (==) (getVal e1) (getVal e2)
+        beval (INEq e1 e2)      = liftM2 (/=) (getVal e1) (getVal e2)
+        beval (IGT e1 e2)       = liftM2 (>) (getVal e1) (getVal e2)
+        beval (IGTE e1 e2)      = liftM2 (>=) (getVal e1) (getVal e2)
+        beval (ILT e1 e2)       = liftM2 (<) (getVal e1) (getVal e2)
+        beval (ILTE e1 e2)      = liftM2 (<=) (getVal e1) (getVal e2)
+
+        
+        -- | evaluates integer expressions, variables and parameters
+        getVal :: V -> IO Int
+        getVal (Attr a)   = (attrs `V.read` a)
+        getVal (Param r)  = return r
+        getVal (ICons x)  = return x
+        getVal (IAdd x y) = liftM2 (+) (getVal x) (getVal y)
+        getVal (ISub x y) = liftM2 (-) (getVal x) (getVal y)
+        getVal (IProd x y) = liftM2 (*) (getVal x) (getVal y)
+        getVal (IDiv x y) = liftM2 quot (getVal x) (getVal y)
+        getVal (IMod x y) = liftM2 (mod) (getVal x) (getVal y)

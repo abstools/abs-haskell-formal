@@ -42,9 +42,9 @@ m1 [] this wb k =
 
 m2 :: Method
 m2 [p1] this wb k = 
-                    Assign p1_ (Param p1) $                      -- aux attr
+                    Assign p1_ (Val (Param p1)) $                      -- aux attr
                         Assign r1 (Get p1_) $ 
-                            If (z `BEq` r1) (\ k' -> Assign w (Attr r1) k') (\ k' -> Assign w (Param this) k') $ 
+                            If (z `BEq` r1) (\ k' -> Assign w (Val (Attr r1)) k') (\ k' -> Assign w (Val (Param this)) k') $ 
                                 Return w wb k
 
 main :: IO ()

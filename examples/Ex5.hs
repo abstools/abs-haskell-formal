@@ -27,7 +27,7 @@ attrs@(x:y:f:z:_) = [1..4]
 
 main_ :: Method
 main_ [] this wb k = 
-                     Assign x (Sync m1 []) (Assign y (Attr x) k)
+                     Assign x (Sync m1 []) (Assign y (Val (Attr x)) k)
 
 m1 :: Method
 m1 [] this wb k = 

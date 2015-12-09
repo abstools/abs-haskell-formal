@@ -92,20 +92,37 @@ data Rhs = New
          | Get FutRef
          | Async ObjRef Method [Ref] -- ^ obj-ref ! method([params])
          | Sync Method [Ref]    -- ^ this.method([params])
-         | Attr Ref       -- ^ dereference a given attribute by looking it up in this object's attribute-array
-         | Param Int      -- ^ do not dereference the given value, because it is method's parameter, thus passed-by-value. This is mainly used because all 'Stmt's operate on attributes. A stmt `Assign "attr" (Param this)` would save the method's parameter to an attribute so it can be used elsewhere.
+         | Val V
+
+-- 'atomic' values: integer numbers, integer operations, variables and 
+-- parameters
+data V = ICons Int
+				| IAdd V V
+				| ISub V V 
+				| IProd V V
+				| IDiv V V
+				| IMod V V
+				| Attr Ref       -- ^ dereference a given attribute by looking it up in this object's attribute-array
+        | Param Int      -- ^ do not dereference the given value, because it is method's parameter, thus passed-by-value. This is mainly used because all 'Stmt's operate on attributes. A stmt `Assign "attr" (Param this)` would save the method's parameter to an attribute so it can be used elsewhere.
 
          -- note: we do not need This, because it is passed as a local parameter on each method
 
 -- | A boolean expression occurs only as a control-flow predicate (if & while) 
 --
--- It does only reference equality of attributes ('BEq') and combinators on them (conjuction,disjunction,negation).
+-- It only references equality of attributes ('BEq'), combinators on them 
+-- (conjuction,disjunction,negation) and comparison between integer expressions
 data BExp = BEq Ref Ref
           | BNeg BExp
           | BCon BExp BExp
           | BDis BExp BExp
-
-
+          | IEq V V
+					| INEq V V
+					| IGT V V
+					| IGTE V V
+					| ILT V V
+					| ILTE V V
+   
+          
 -- | The type of every top-level ABS-method.
 type Method = [Ref]             -- ^ a list of passed (deref) parameters
             -> ObjRef            -- ^ this obj
