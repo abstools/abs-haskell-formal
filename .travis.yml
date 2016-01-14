@@ -86,8 +86,8 @@ after_success:
   - if [ "$TRAVIS_BRANCH" == "master" -a "$TRAVIS_PULL_REQUEST" == "false" -a "$GHCVER" == "7.10.3" ]; 
     then
        cabal haddock --hyperlink-source --html-location='http://hackage.haskell.org/packages/archive/$pkg/latest/doc/html';
-       cp doc/DocABS.html dist/doc/html/habs-parser/;
-       cd dist/doc/html/habs-parser/;
+       cp dist/doc/html/abs-haskell-formal/;
+       cd dist/doc/html/abs-haskell-formal/;
        git init;
        git config user.name "Travis CI";
        git config user.email "nobody@nobody.org";
