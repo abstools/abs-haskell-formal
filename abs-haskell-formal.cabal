@@ -15,9 +15,9 @@ build-type: Simple
 cabal-version: >= 1.8
 
 category: Concurrency
-synopsis: Translating a subset of ABS to pure Haskell for proving correctness and resource consumption
+synopsis: Translating ABS to Haskell to prove correctness & resource consumption
 description: 
-  Translating a subset of ABS to pure Haskell for proving correctness and resource consumption
+  Translating ABS to Haskell to prove correctness & resource consumption
 
 extra-source-files:
   README.md
