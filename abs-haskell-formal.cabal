@@ -1,20 +1,34 @@
 name: abs-haskell-formal
 version: 0.0.1
-synopsis: Translating a subset of ABS to pure Haskell for proving correctness and resource consumption
-description: Translating a subset of ABS to pure Haskell for proving correctness and resource consumption
-author: Nikolaos Bezirgiannis, Enrique Martin, Elvira Albert, Frank de Boer
+
+license: BSD3
+license-file: LICENSE
+author: Elvira Albert, Nikolaos Bezirgiannis, Frank de Boer, Enrique Martin,
 maintainer: Nikolaos Bezirgiannis <bezirgia@cwi.nl>
+copyright: Copyright (c) 2013-2015, The Envisage Consortium
+homepage: http://abs-models.org
+bug-reports: https://github.com/abstools/abs-haskell-formal/issues
+
 stability: provisional
+tested-with: GHC == 7.8.4, GHC == 7.10.1, GHC == 7.10.2, GHC == 7.10.3
 build-type: Simple
 cabal-version: >= 1.8
 
-Source-repository this
+category: Concurrency
+synopsis: Translating a subset of ABS to pure Haskell for proving correctness and resource consumption
+description: 
+  Translating a subset of ABS to pure Haskell for proving correctness and resource consumption
+
+extra-source-files:
+  README.md
+
+source-repository head
   type:     git
   location: git://github.com/abstools/abs-haskell-formal.git
-  branch: ast
+  branch: master
 
 library
-  build-depends:      base,
+  build-depends:      base >= 4.7 && < 5,
                       -- for scheduler-queue of objects, and dequeue of processes inside an object with Data.Sequence
                       containers,
                       -- for the heap array: heap of objects (each with an attr array) and futures (either [listener] value)
