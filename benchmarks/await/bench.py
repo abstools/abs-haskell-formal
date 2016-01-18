@@ -57,7 +57,7 @@ def gen_all(l):
 	for n in l:
 		print "Compiling n == ", n
 		gen_n_seq(r_cnts, n)
-		subprocess.check_output( "ghc -i/home/kike/svn/abs2haskell-pure/src --make -rtsopts " + str(n) + ".hs -o " + str(n) + ".hs.o", shell=True)
+		subprocess.check_output( "ghc -i../../src --make -rtsopts " + str(n) + ".hs -o " + str(n) + ".hs.o", shell=True)
     
 	
 def get_data_all(l):

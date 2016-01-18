@@ -1,4 +1,4 @@
-module TestWhile where
+module Main where
 
 import ABS
 
@@ -24,17 +24,17 @@ res:n:fac:i:the_end:_=[1..]
 
 main_ :: Method
 main_ [] this wb k = 
-    Assign n (Val (ICons 10)) $ 
+    Assign n (Val (I 10)) $ 
     Assign res (Sync factorial [n]) $
     k
 
 factorial :: Method
 factorial [nn] this wb k =
-	Assign fac (Val (ICons 1)) $
-	Assign i (Val (ICons nn)) $
-	While (IGT (Attr i) (ICons 0)) 
-		(\k' -> (Assign fac (Val (IProd (Attr fac) (Attr i)))) $ 
-		        (Assign i (Val (ISub (Attr i) (ICons 1))) ) $ k'
+	Assign fac (Val (I 1)) $
+	Assign i (Val (I nn)) $
+	While (IGT (Attr i) (I 0)) 
+		(\k' -> (Assign fac (Val (Prod (Attr fac) (Attr i)))) $ 
+		        (Assign i (Val (Sub (Attr i) (I 1))) ) $ k'
 		) $
 	Return fac wb $
 	k

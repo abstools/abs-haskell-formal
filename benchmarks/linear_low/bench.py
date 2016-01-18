@@ -14,9 +14,8 @@ timedat     = "time.dat"
 stepsdat    = "steps.dat"
 ubdat       = "ub.dat"
 sizes       = range(5,101,5)
-src_path    = "/home/kike/svn/abs2haskell-pure/src/"
 final_attr  = "the_end"
-saco_path   = "/home/kike/Systems/costa/costabs/src/interfaces/shell/costabs"
+saco_path   = "costabs"
 
 
 
@@ -61,7 +60,7 @@ m [] this wb k =
   f.write( "ma [] this wb k = " )
   f.write( "Assign z New $ ")
   for i in xrange(100):
-    f.write( "Assign z (Attr z) $ ")
+    f.write( "Assign z (Val (Attr z)) $ ")
   f.write( "Return z wb k\n\n" )
 
   f.write( "main :: IO ()\n" )
@@ -101,7 +100,7 @@ def gen_all(l):
 	for n in l:
 		print "Compiling n == ", n
 		gen_n_seq(n)
-		subprocess.check_output( "ghc -i" + src_path + " --make -rtsopts " + str(n) + ".hs -o " + str(n) + ".hs.o", shell=True)
+		subprocess.check_output( "ghc -i../../src --make -rtsopts " + str(n) + ".hs -o " + str(n) + ".hs.o", shell=True)
     
 	
 def get_data_all(l):

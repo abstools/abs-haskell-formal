@@ -96,14 +96,14 @@ data Rhs = New
 
 -- 'atomic' values: integer numbers, integer operations, variables and 
 -- parameters
-data V = ICons Int
-				| IAdd V V
-				| ISub V V 
-				| IProd V V
-				| IDiv V V
-				| IMod V V
-				| Attr Ref       -- ^ dereference a given attribute by looking it up in this object's attribute-array
-        | Param Int      -- ^ do not dereference the given value, because it is method's parameter, thus passed-by-value. This is mainly used because all 'Stmt's operate on attributes. A stmt `Assign "attr" (Param this)` would save the method's parameter to an attribute so it can be used elsewhere.
+data V = I Int
+       | Add V V
+       | Sub V V 
+       | Prod V V
+       | Div V V
+       | Mod V V
+       | Attr Ref       -- ^ dereference a given attribute by looking it up in this object's attribute-array
+       | Param Int      -- ^ do not dereference the given value, because it is method's parameter, thus passed-by-value. This is mainly used because all 'Stmt's operate on attributes. A stmt `Assign "attr" (Param this)` would save the method's parameter to an attribute so it can be used elsewhere.
 
          -- note: we do not need This, because it is passed as a local parameter on each method
 
@@ -116,11 +116,11 @@ data BExp = BEq Ref Ref
           | BCon BExp BExp
           | BDis BExp BExp
           | IEq V V
-					| INEq V V
-					| IGT V V
-					| IGTE V V
-					| ILT V V
-					| ILTE V V
+	  | INEq V V
+	  | IGT V V
+	  | IGTE V V
+	  | ILT V V
+	  | ILTE V V
    
           
 -- | The type of every top-level ABS-method.

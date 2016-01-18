@@ -4,8 +4,8 @@ main_ [] this wb k = go [n] this wb k
 
 go :: Method
 go [n] this wb k =
-    Assign zero (Param 0) $
-    Assign next (Param n) $
+    Assign zero (Val (I 0)) $
+    Assign next (Val (I n)) $
     Assign r New $
     Assign g (Async r m []) $
     Await g $

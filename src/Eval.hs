@@ -177,9 +177,9 @@ eval this h attrArrSize = do
         getVal :: V -> IO Int
         getVal (Attr a)   = (attrs `V.read` a)
         getVal (Param r)  = return r
-        getVal (ICons x)  = return x
-        getVal (IAdd x y) = liftM2 (+) (getVal x) (getVal y)
-        getVal (ISub x y) = liftM2 (-) (getVal x) (getVal y)
-        getVal (IProd x y) = liftM2 (*) (getVal x) (getVal y)
-        getVal (IDiv x y) = liftM2 quot (getVal x) (getVal y)
-        getVal (IMod x y) = liftM2 (mod) (getVal x) (getVal y)
+        getVal (I x)  = return x
+        getVal (Add x y) = liftM2 (+) (getVal x) (getVal y)
+        getVal (Sub x y) = liftM2 (-) (getVal x) (getVal y)
+        getVal (Prod x y) = liftM2 (*) (getVal x) (getVal y)
+        getVal (Div x y) = liftM2 quot (getVal x) (getVal y)
+        getVal (Mod x y) = liftM2 (mod) (getVal x) (getVal y)

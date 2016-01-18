@@ -23,8 +23,8 @@ main :=
 main_ :: Method
 main_ [] this wb k = 
   -- Parameters of the threadring program
-   Assign actors (Param 10) $ 
-   Assign rounds (Param 100) $ 
+   Assign actors (Val (I 10)) $ 
+   Assign rounds (Val (I 100)) $ 
    Assign afirst New $ 
    Assign f1 (Async afirst init_first [actors]) $ 
    Await f1 $ 
@@ -41,9 +41,9 @@ init_first(i) :=
 
 init_first :: Method
 init_first [i] this wb k = 
-    Assign iD (Param i) $ 
-    Assign iDnext (Param (i-1)) $ -- using int arithmetic on params is ok
-    Assign afirst (Param this) $ 
+    Assign iD (Val (Param i)) $ 
+    Assign iDnext (Val (Sub (Param i) (I 1))) $ -- using int arithmetic on params is ok
+    Assign afirst (Val (Param this)) $ 
     Assign anext New $ 
     Assign f1 (Async anext init_rest [iDnext,afirst]) $ 
     Await f1 $ 
@@ -60,10 +60,10 @@ init_rest(i,first_) :=
 
 init_rest :: Method
 init_rest [i,first_] this wb k = 
-    Assign iD (Param i) $ 
-    Assign iDnext (Param (i-1)) $ -- using int arithmetic on params is ok
-    Assign afirst (Param first_) $ 
-    Assign vlast (Param 1) $      -- turning a pure value to an attribute to use in the next BEq
+    Assign iD (Val (Param i)) $ 
+    Assign iDnext (Val (Sub (Param i) (I 1))) $ -- using int arithmetic on params is ok
+    Assign afirst (Val (Param first_)) $ 
+    Assign vlast (Val (I 1)) $      -- turning a pure value to an attribute to use in the next BEq
     If (BNeg (iD `BEq` vlast)) 
            (\ k' -> Assign anext New $ 
                    Assign f1 (Async anext init_rest [iDnext,afirst]) $ 
@@ -89,11 +89,11 @@ go(r) :=
 
 go :: Method
 go [round_] this wb k = 
-    Assign rcurrent (Param round_) $ 
+    Assign rcurrent (Val (Param round_)) $ 
     If (iD `BEq` vlast)
        (If (rcurrent `BEq` vlast) 
            Skip  -- done
-           (\ k' -> Assign rnext (Param (round_ -1)) $ -- placeholder
+           (\ k' -> Assign rnext (Val (Sub (Param round_) (I 1))) $ -- placeholder
                    Assign f1 (Async afirst go [rnext]) k'))
        (Assign f1 (Async anext go [rcurrent])) $ 
     Return iD wb k              -- dummy

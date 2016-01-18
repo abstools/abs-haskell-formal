@@ -23,13 +23,13 @@ go [current]this :=
 
 main_ :: Method
 main_ [] this wb k =
-    Assign next (Param n) $
+    Assign next (Val (I n)) $
     Assign next (Sync go [next]) k
 
 go :: Method
 go [current] this wb k =
-  Assign next (Param (current-1)) $
-  Assign zero (Param 0) $ -- constant
+  Assign next (Val (Sub (Param current) (I 1))) $
+  Assign zero (Val (I 0)) $ -- constant
   If (BNeg (next `BEq` zero))
      (\ k' -> Assign l New $
              Assign r New $
