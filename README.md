@@ -1,6 +1,6 @@
 # Formal translation of ABS-subset to Haskell
 
-[![Build Status](https://travis-ci.org/abstools/abs-haskell-formal.svg)](https://travis-ci.org/abstools/abs-haskell-formal) [online API docs](http://abstools.github.io/abs-haskell-formal)
+[![Build Status](https://travis-ci.org/abstools/abs-haskell-formal.svg)](https://travis-ci.org/abstools/abs-haskell-formal) [![License (3-Clause BSD)](https://img.shields.io/badge/license-BSD--3-blue.svg?style=flat)](http://opensource.org/licenses/BSD-3-Clause) [online API docs](http://abstools.github.io/abs-haskell-formal)
 
 A library to write (embed) ABS-subset programs in Haskell, and execute them
 at runtime by an included Haskell interpreter.
