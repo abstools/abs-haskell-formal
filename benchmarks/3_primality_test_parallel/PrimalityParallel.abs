@@ -1,0 +1,38 @@
+module PrimalityParallel;
+
+interface Main {
+	Unit primality_test(Int n);
+	Int divides(Int d, Int n);
+}
+
+class IMain implements Main{
+	Int n_div = 0;
+	
+	Unit primality_test(Int n){
+		Int i = 1;
+		Int ni = n;
+		while ( i <= n ) {
+		  Main obj = new IMain();
+			Fut<Int> f = obj ! divides(i, ni);
+			i = i + 1;
+		}
+	}
+	
+	Int divides(Int d, Int n){
+	  Int reminder = n % d;
+	  Int res = -1;
+		if (reminder == 0){
+			res = 1;
+		} else {
+		  res =  0;
+		}
+		return res;
+	}
+	
+}
+
+//{
+//  Int n = 100;
+//  Main m = new IMain();
+//	m.primality_test(n);
+//}

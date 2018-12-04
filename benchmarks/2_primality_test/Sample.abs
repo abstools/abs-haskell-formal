@@ -1,0 +1,48 @@
+module Primality;
+
+interface Main {
+	Int is_prime(Int n);
+	Int divides(Int d, Int n);
+}
+
+class IMain implements Main{
+	Int is_prime(Int n){
+		Int i = 1;
+		Int ni = n;
+		Int num_div = 0;
+		Int primeb = -1;
+		while ( i <= n ) {
+		  Main obj = new IMain();
+			Fut<Int> f = obj ! divides(i, ni);
+			await f?;
+			Int i_divides = f.get;
+			num_div = num_div + i_divides;
+			i = i + 1;
+		}
+		if (num_div == 2){
+			primeb = 1;
+		} else {
+			primeb = 0;
+		}
+		return primeb;
+	}
+	
+	
+	Int divides(Int d, Int n){
+	  Int reminder = n % d;
+	  Int res = -1;
+		if (reminder == 0){
+			res = 1;
+		} else {
+		  res =  0;
+		}
+		return res;
+	}
+	
+}
+
+//{
+//  Int n = 100;
+//  Main m = new IMain();
+//	Int x = m.is_prime(n);
+//}

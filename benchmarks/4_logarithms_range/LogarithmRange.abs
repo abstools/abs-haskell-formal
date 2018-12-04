@@ -1,0 +1,42 @@
+module LogarithmRange;
+
+interface Main {
+	Unit compute_logarithms(Int n, Int max);
+	Int logarithm(Int n, Int b, Int max);
+}
+
+class IMain implements Main{
+
+	Unit compute_logarithms(Int n, Int max){
+		Int nn = n;
+		Int base = 2;
+		Int maximum = max;
+		while ( nn > 0 ) {
+			Main m = new IMain();
+			Fut<Int> f = m ! logarithm(nn,base,maximum);
+			nn = nn - 1;
+		}
+	}
+	
+	Int logarithm(Int n, Int b, Int max){
+		Int i = 0;
+		Int next = b;
+		Int log_val = 0;
+		while( i <= max ){
+		  if ( next >= n ){
+		  	log_val = i;
+		  }
+			i = i + 1;
+			next = next * b;
+		}
+		return log_val;
+	}
+	
+	
+}
+	
+/*{
+  Int n = 500;
+	Main x = new IMain();
+	x ! compute_logarithms(n,9);
+}*/

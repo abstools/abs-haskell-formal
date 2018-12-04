@@ -46,22 +46,6 @@ Future Heap with array-size:10{
 Counter: 2
 ```
 
-## Running the benchmarks
-
-Assuming you have installed this library, you can run the benchmarks and obtaining the execution measurements by installing also the following tools:
-
-a) the [Python](https://www.python.org/downloads/) interpreter (2.5 <= version < 3)
-b) the [SACO](http://costa.ls.fi.upm.es/costabs/home.php) tool (stands for, Static Analyzer for Concurrent Objects)
-
-Then, navigate under the benchmarks folder to a particular benchmark and run it by calling:
-
-```bash
-cd benchmarks/linear_high/
-./bench.py
-```
-
-The execution time&steps measurements will be recorded in the same benchmark folder in `.dat` files.
-
 ## Building the API docs
 
 Run inside the repository directory:

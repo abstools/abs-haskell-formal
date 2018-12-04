@@ -1,0 +1,31 @@
+module Logarithm;
+
+interface Main {
+	Int logarithm(Int n, Int b, Int max);
+}
+
+class IMain implements Main{
+ 
+  Int logarithm(Int n, Int b, Int max){
+		Int i = 0;
+		Int next = b;
+		Int log_val = 0;
+		while( i <= max ){
+		  if ( next >= n ){
+		  	log_val = i;
+		  }
+			i = i + 1;
+			next = next * b;
+		}
+		return log_val;
+	}
+	
+
+}
+	
+/*{
+  Int n = 500;
+	Main x = new IMain();
+	x ! logarithm(n,2,9);
+}*/
+
