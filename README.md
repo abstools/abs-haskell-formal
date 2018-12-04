@@ -17,19 +17,19 @@ Run inside the repository directory:
 cabal install
 ```
 
-## Running the examples
+## Running the bechmarks
 
-The ABS-subset examples are under `examples/` directory, embedded as Haskell.
+The ABS-subset benchmarks are under `benchmarks/` directory, embedded as Haskell.
 After installing this library, you can compile them with:
 
 ```
-ghc --make examples/ExampleName.hs
+ghc --make benchmarks/<FOLDER>/ExampleName.hs
 ```
 
 Execute an example with:
 
 ```
-./examples/ExampleName
+./benchmarks/<FOLDER>/ExampleName
 ```
 
 which will output the number of steps executed, the final heap, and the heap counter, e.g.:
