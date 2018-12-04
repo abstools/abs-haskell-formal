@@ -23,13 +23,13 @@ The ABS-subset benchmarks are under `benchmarks/` directory, embedded as Haskell
 After installing this library, you can compile them with:
 
 ```
-ghc --make benchmarks/<FOLDER>/ExampleName.hs
+ghc --make benchmarks/<FOLDER>/progs/ExampleName.hs
 ```
 
 Execute an example with:
 
 ```
-./benchmarks/<FOLDER>/ExampleName
+./benchmarks/<FOLDER>/progs/ExampleName
 ```
 
 which will output the number of steps executed, the final heap, and the heap counter, e.g.:
