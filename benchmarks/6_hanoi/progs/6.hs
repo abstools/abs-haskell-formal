@@ -25,4 +25,4 @@ hanoi [a,b,tmp,n] this wb k =
   
 
 main :: IO ()
-main = run' 9999999999999999 main_ the_end
+main = printHeap =<< run 9999999999999999 main_ the_end

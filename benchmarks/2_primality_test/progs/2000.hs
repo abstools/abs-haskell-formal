@@ -41,8 +41,8 @@ divides [pd, pn] this wb k =
   Return res wb k
 
 
-main :: IO ()
-main = run' 1000000 main_ (head the_end)
-
 main' :: IO ()
-main' = printHeap =<< run 1000000 main_ (head the_end)
+main' = run' 1000000 main_ (head the_end)
+
+main :: IO ()
+main = printHeap =<< run 1000000 main_ (head the_end)
